@@ -72,12 +72,8 @@ class Usuarios{
 		
 		if (isset($results[0])){
 			//podendo escrever assim if(count ($results)>0)
-			$row=$results [0];
-		
-			$this->setIdusuarios($row['idusuarios']);
-			$this->setDeslogin($row['deslogin']);
-			$this->setDessenha($row['dessenha']);
-			$this->setDtcadastro(new DateTime($row['dtcadastro']));	
+				
+			$this->setData($results[0]);
 		}else{
 			
 			throw new Exception ("Login e/ou senha inválida");
@@ -85,6 +81,29 @@ class Usuarios{
 		
 	}
 	
+	public function setData($data){
+		
+		$this->setIdusuarios($data['idusuarios']);
+		$this->setDeslogin($data['deslogin']);
+		$this->setDessenha($data['dessenha']);
+		$this->setDtcadastro(new DateTime($data['dtcadastro']));
+		
+	}
+	
+	public function insert(){
+		
+		$sql = new sql();
+		
+		$results=$sql->select("CALL nsp_usuarios_insert(:LOGIN, :PASSWORD)", array(
+		':LOGIN'=>$this->getDeslogin(),
+		':PASSWORD'=>$this->getDessenha()
+		));
+		
+		if (count($results)>0){
+			
+			$this->setData($results[0]);
+		}
+	}
 	public function loadById($id){
 		
 		$sql = new sql();
@@ -92,11 +111,7 @@ class Usuarios{
 		
 		if (isset($results[0])){
 			//podendo escrever assim if(count ($results)>0)
-			$row=$results [0];
-			$this->setIdusuarios($row['idusuarios']);
-			$this->setDeslogin($row['deslogin']);
-			$this->setDessenha($row['dessenha']);
-			$this->setDtcadastro(new DateTime($row['dtcadastro']));	
+			$this->setData($results[0]);
 		}
 	}
 	
