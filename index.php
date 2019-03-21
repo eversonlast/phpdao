@@ -9,8 +9,17 @@ require_once ("config.php");
 //echo $root;
 
 //Carrega a Lista 
-$lista=Usuarios::getList();
+//$lista=Usuarios::getList();
+//echo json_encode($lista);
 
-echo json_encode($lista);
+//Faz busac pelo característica
+//$busca = Usuarios::search("Jo");
+//echo json_encode($busca);
 
+//Carrega um usuário com login e senha
+
+$usuarios= new Usuarios();
+$usuarios->login("Everson", "!@#$%");
+
+echo ($usuarios);
 ?>
