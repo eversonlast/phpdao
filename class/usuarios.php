@@ -46,6 +46,12 @@ class Usuarios{
 		
 		$this->dtcadastro=$values;
 	}
+	public static function getList(){
+		
+		$sql=new sql();
+		
+		return $sql->select("SELECT * FROM tb_usuarios ORDER BY deslogin;");
+	}
 	
 	public function loadById($id){
 		
