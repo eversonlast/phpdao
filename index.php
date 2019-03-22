@@ -21,12 +21,20 @@ require_once ("config.php");
 //$usuarios->login("Everson", "!@#$%");
 //echo ($usuarios);
 
-
+/* Insert
 $aluno= new Usuarios();
 
 $aluno->setDeslogin("aluno");
 $aluno->setDessenha("@lun0");
 
 $aluno->insert();
-echo $aluno;
+echo $aluno;*/
+
+$usuario= new Usuarios();
+
+$usuario-> loadById(2);
+
+$usuario->update("professor", "!@#$%&*");
+
+echo $usuario;
 ?>
