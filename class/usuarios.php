@@ -103,6 +103,21 @@ class Usuarios{
 			':ID'=>$this->getIdusuarios()
 		));
 	}
+	
+	public function delete(){
+		
+		$sql = new sql();
+		
+		$sql->query("DELETE FROM tb_usuarios WHERE idusuarios= :ID", array(
+		':ID'=>$this->getIdusuarios()
+		));
+		
+		$this->setIdusuarios(0);
+		$this->setDeslogin(NULL);
+		$this->setDessenha(NULL);
+		$this->setDtcadastro(new DateTime());
+	}
+	
 	public function insert(){
 		
 		$sql = new sql();

@@ -29,12 +29,19 @@ $aluno->setDessenha("@lun0");
 
 $aluno->insert();
 echo $aluno;*/
+/*Update
+$usuario= new Usuarios();
+$usuario-> loadById(2);
+$usuario->update("professor", "!@#$%&*");
+echo $usuario;*/
+
+//Delete
 
 $usuario= new Usuarios();
 
-$usuario-> loadById(2);
-
-$usuario->update("professor", "!@#$%&*");
+$usuario->loadById(3);
+$usuario->delete();
 
 echo $usuario;
+
 ?>
